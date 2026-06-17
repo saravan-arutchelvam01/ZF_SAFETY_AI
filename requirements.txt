@@ -10,3 +10,4 @@ SQLAlchemy
 PyMySQL
 Pillow
 mysql-connector-python
+streamlit-autorefresh
