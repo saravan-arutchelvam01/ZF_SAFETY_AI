@@ -6,6 +6,7 @@ scikit-learn
 pdfplumber
 reportlab
 requests
-mysql-connector-python
 SQLAlchemy
+PyMySQL
 Pillow
+mysql-connector-python

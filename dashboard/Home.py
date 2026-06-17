@@ -14,7 +14,6 @@ if project_root not in sys.path:
 import streamlit as st
 import pandas as pd
 
-from scripts.db_connection import engine
 from streamlit_autorefresh import st_autorefresh
 
 # ==========================================
@@ -112,11 +111,7 @@ st.markdown("""
 # LOAD DATA
 # ==========================================
 
-query = """
-SELECT * FROM production_data
-"""
-
-df = pd.read_sql(query, engine)
+df = pd.read_csv("data/production_data.csv")
 
 # ==========================================
 # CALCULATIONS

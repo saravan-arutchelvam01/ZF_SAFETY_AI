@@ -26,8 +26,6 @@ project_root = os.path.abspath(
 if project_root not in sys.path:
     sys.path.append(project_root)
 
-from scripts.db_connection import engine
-
 # ==========================================
 # PAGE CONFIG
 # ==========================================
@@ -68,14 +66,12 @@ st.markdown("""
 # LOAD DATA
 # ==========================================
 
-query = """
-SELECT *
-FROM production_data
-"""
+# ==========================================
+# LOAD DATA
+# ==========================================
 
-df = pd.read_sql(
-    query,
-    engine
+df = pd.read_csv(
+    "data/production_data.csv"
 )
 
 # ==========================================

@@ -1,12 +1,9 @@
-import streamlit as st
-import pandas as pd
 import sys
 import os
 
 project_root = os.path.abspath(
     os.path.join(
         os.path.dirname(__file__),
-        "..",
         ".."
     )
 )
@@ -14,8 +11,10 @@ project_root = os.path.abspath(
 if project_root not in sys.path:
     sys.path.append(project_root)
 
-from scripts.db_connection import engine
+import streamlit as st
+import pandas as pd
 
+from streamlit_autorefresh import st_autorefresh
 # ==========================================
 # AZURE SPECTRUM THEME
 # ==========================================
@@ -64,11 +63,7 @@ st.markdown("""
 # LOAD DATA
 # ==========================================
 
-query = """
-SELECT * FROM production_data
-"""
-
-df = pd.read_sql(query, engine)
+df = pd.read_csv("data/production_data.csv")
 
 # ==========================================
 # HEADER

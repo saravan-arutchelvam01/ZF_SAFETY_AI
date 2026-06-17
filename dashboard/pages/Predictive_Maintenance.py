@@ -19,8 +19,6 @@ project_root = os.path.abspath(
 if project_root not in sys.path:
     sys.path.append(project_root)
 
-from scripts.db_connection import engine
-
 # ==========================================
 # AZURE SPECTRUM THEME
 # ==========================================
@@ -52,14 +50,9 @@ st.markdown("""
 # LOAD DATA
 # ==========================================
 
-query = """
-SELECT * FROM production_data
-"""
+from scripts.db_connection import load_data
 
-df = pd.read_sql(
-    query,
-    engine
-)
+df = load_data()
 
 
 product = st.selectbox(

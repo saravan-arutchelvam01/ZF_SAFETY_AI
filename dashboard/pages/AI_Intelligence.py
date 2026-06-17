@@ -15,7 +15,6 @@ project_root = os.path.abspath(
 if project_root not in sys.path:
     sys.path.append(project_root)
 
-from scripts.db_connection import engine
 
 model = joblib.load(
     "models/safety_model.pkl"
@@ -120,14 +119,11 @@ product = st.selectbox(
     ]
 )
 
-product_df = pd.read_sql(
-    f"""
-    SELECT *
-    FROM production_data
-    WHERE component_type = '{product}'
-    """,
-    engine
-)
+df = pd.read_csv("data/production_data.csv")
+
+product_df = df[
+    df["component_type"] == product
+]
 
 if len(product_df) == 0:
 
